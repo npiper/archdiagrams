@@ -1,0 +1,7 @@
+---
+applications:
+- name: plantuml
+  memory: 512m
+  instances: 1
+  docker:
+    image: plantuml/plantuml-server:jetty 

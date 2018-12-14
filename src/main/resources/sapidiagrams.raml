@@ -1,0 +1,23 @@
+#%RAML 1.0
+---
+title: sapidiagrams  API
+baseUri: http://api.e-bookmobile.com/{version}
+version: v1
+description: An API to retrieve definitions of C4 based Architecture diagrams.
+
+
+/archdiagrams:
+  get:
+    description: Get the list of supported diagrams
+    responses:
+      200:
+        body:
+          application/json:
+            example: [ "Ford", "BMW", "Fiat" ]
+/archdiagrams/{ID}:
+  get:
+    description: Get a SAPI Diagram
+    responses:
+      200:
+        body:
+          image/png:
