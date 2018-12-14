@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class DeploymentModelComponent {
 
   @Autowired
-  ArchModelComponent sapiModelComponent;
+  ArchModelComponent modelComponent;
   
   
   

@@ -9,7 +9,7 @@ import neilpiper.me.archdiagrams.components.ArchModelComponent;
 public abstract class AbstractPlantUMLDiagram implements PlantUMLDiagram {
   
   @Autowired
-  protected ArchModelComponent sapiModel;
+  protected ArchModelComponent archModel;
   protected PlantUMLWriter plantUMLWriter = new PlantUMLWriter();
 
   // Sub-classes implement method to create the view

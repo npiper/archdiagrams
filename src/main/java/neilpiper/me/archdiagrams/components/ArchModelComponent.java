@@ -11,7 +11,7 @@ import com.structurizr.model.SoftwareSystem;
 
 
 /**
- * The SAPI Model Component represents the establishment of the model of C4 Software Architecture
+ * The ArchModel Component represents the establishment of the model of C4 Software Architecture
  * elements and relationships.
  * 
  * It should operate up to the 'Container' level with interrogation of codebases preferred for

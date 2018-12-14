@@ -18,9 +18,9 @@ public class MicroserviceDynamicView extends AbstractPlantUMLDiagram implements 
   public <T extends View> View getView() {
     // TODO Auto-generated method stub
     
-    ViewSet views = this.sapiModel.workspace.getViews();
+    ViewSet views = this.archModel.workspace.getViews();
     
-    SoftwareSystem system = this.sapiModel.model.getSoftwareSystemWithName("Customer Information System");
+    SoftwareSystem system = this.archModel.model.getSoftwareSystemWithName("Customer Information System");
 
     ContainerView containerView = views.createContainerView(system, "Containers", null);
     containerView.addAllElements();

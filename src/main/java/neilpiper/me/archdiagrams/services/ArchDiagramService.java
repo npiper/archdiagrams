@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import neilpiper.me.archdiagrams.components.ArchViewsComponent;
 import net.sourceforge.plantuml.SourceStringReader;
 
-/** REST Entry point for SAPI Architecture diagrams
+/** REST Entry point for Architecture diagrams
  * 
  * PlantUML Ref at http://plantuml.com/api
  * 
