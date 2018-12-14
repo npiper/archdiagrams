@@ -1,0 +1,49 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+<servers>
+  <server>
+      <id>github</id>
+      <username>${env.GIT_USER_NAME}</username>
+      <password>${env.GITPW}</password>
+  </server>
+</servers>
+<pluginGroups>
+        <pluginGroup>org.mule.tools</pluginGroup>
+    </pluginGroups>
+<profiles>
+  <profile>
+   <id>default</id>
+<repositories>
+    <repository>
+        <id>maven-central</id>
+        <url>http://repo1.maven.org/maven2</url>
+    </repository>
+        <repository>
+            <id>mulesoft-releases</id>
+            <url>http://repository.mulesoft.org/releases/</url>
+        </repository>
+
+        <!-- My AWS Public repo -->
+        <repository>
+                 <id>solveapuzzle-repo</id>
+                 <url>https://s3-ap-southeast-2.amazonaws.com/solveapuzzle-repo/release/</url>
+         </repository>
+
+</repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mulesoft-release</id>
+            <url>http://repository.mulesoft.org/releases/</url>
+        </pluginRepository>
+</pluginRepositories>
+
+  </profile>
+</profiles>
+  <activeProfiles>
+    <activeProfile>default</activeProfile>
+  </activeProfiles>
+
+</settings>
