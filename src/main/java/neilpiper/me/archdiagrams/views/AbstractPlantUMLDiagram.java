@@ -22,7 +22,7 @@ public abstract class AbstractPlantUMLDiagram implements PlantUMLDiagram {
    */
   public abstract void setUMLSkinParams();
   
-  public String getPlantUML()
+  public String getDiagram()
   {
     StringWriter stringWriter = new StringWriter();
     plantUMLWriter.clearSkinParams();

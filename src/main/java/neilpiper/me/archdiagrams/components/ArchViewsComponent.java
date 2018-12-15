@@ -39,7 +39,7 @@ public class ArchViewsComponent {
   
   public String getDiagramByID(String id)
   {
-    return diagrams.get(0).getPlantUML();
+    return diagrams.get(0).getDiagram();
     
   }
   

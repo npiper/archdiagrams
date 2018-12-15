@@ -10,12 +10,22 @@
 
 	<name>archdiagrams</name>
 	<url>http://maven.apache.org</url>
-
+    <!-- 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.1.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath /> 
+		-->
+		<!-- lookup parent from repository -->
+	<!-- 
+	</parent>
+	-->
+	
+	<parent>
+		<groupId>neilpiper.me</groupId>
+		<artifactId>rest.microservice.base</artifactId>
+		<version>0.1.0_32.02fcc81</version>
 	</parent>
 
 	<properties>
@@ -32,7 +42,13 @@
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
 		
-
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -114,4 +130,22 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- REPOSITORIES & PLUGIN REPOSITORIES -->
+	<repositories>
+		<!-- public release repo -->
+		
+		<repository>
+			<id>solveapuzzle-repo</id>
+			<url>https://s3-ap-southeast-2.amazonaws.com/solveapuzzle-repo/release/</url>
+		</repository>
+	
+	</repositories>
+
+
+	<scm>
+		<url>https://github.com/npiper/archdiagrams</url>
+		<developerConnection>scm:git:https://github.com/npiper/archdiagrams.git</developerConnection>
+	</scm>
+	
 </project>

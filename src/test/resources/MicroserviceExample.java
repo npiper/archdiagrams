@@ -1,8 +1,7 @@
-package neilpiper.me.archdiagrams;
+
 
 import java.io.StringWriter;
 import com.structurizr.Workspace;
-import com.structurizr.api.StructurizrClient;
 import com.structurizr.io.plantuml.PlantUMLWriter;
 import com.structurizr.model.Container;
 import com.structurizr.model.InteractionStyle;
