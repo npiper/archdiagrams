@@ -46,4 +46,25 @@ http://localhost:8080/archdiagrams/1
  * Populate views in view model
  * Run..
  
+## Build
+
+[https://travis-ci.org/npiper/archdiagrams](https://travis-ci.org/npiper/archdiagrams)
+
+## Maven Doco
+
+[https://npiper.github.io/archdiagrams](https://npiper.github.io/archdiagrams)
  
+# REFERENCES
+ 
+[Include graphics in PlantUML Syntax](http://forum.plantuml.net/3790/please-provide-way-include-data-uri-bitmap-images-diagrams)
+ 
+[C4 Model](https://c4model.com/)
+
+[Java Structurizr](https://github.com/structurizr/java)
+
+[Java Structurizr - Examples](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example)
+
+[Java Structurizr - PlantUML](https://github.com/structurizr/java/tree/master/structurizr-plantuml)
+
+[Java Generics](https://www.baeldung.com/java-generics)
+
