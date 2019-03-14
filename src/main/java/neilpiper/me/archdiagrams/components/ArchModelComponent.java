@@ -87,6 +87,5 @@ public class ArchModelComponent {
     reportingService.uses(reportingDatabase, "Stores data in", "", InteractionStyle.Synchronous);
     auditService.uses(auditStore, "Stores events in", "", InteractionStyle.Synchronous);
 
-
   }
 }

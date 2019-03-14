@@ -1,5 +1,6 @@
 package neilpiper.me.archdiagrams.views;
 
+import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import com.structurizr.model.SoftwareSystem;
 import com.structurizr.model.Tags;
@@ -14,17 +15,22 @@ import neilpiper.me.archdiagrams.components.ArchModelComponent;
 @Component
 public class MicroserviceDynamicView extends AbstractPlantUMLDiagram implements PlantUMLDiagram {
 
+  ContainerView containerView;
+  
+  @PostConstruct
+  public void setUp()
+  {
+    ViewSet views = this.archModel.workspace.getViews();
+    SoftwareSystem system = this.archModel.model.getSoftwareSystemWithName("Customer Information System");
+    containerView = views.createContainerView(system, "Containers", null);
+  }
+  
   @Override
   public <T extends View> View getView() {
     // TODO Auto-generated method stub
     
     ViewSet views = this.archModel.workspace.getViews();
-    
-    SoftwareSystem system = this.archModel.model.getSoftwareSystemWithName("Customer Information System");
-
-    ContainerView containerView = views.createContainerView(system, "Containers", null);
     containerView.addAllElements();
-    
     
     Styles styles = views.getConfiguration().getStyles();
     styles.addElementStyle(Tags.ELEMENT).color("#000000");
