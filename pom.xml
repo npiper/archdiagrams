@@ -114,7 +114,26 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+			
+			<!-- Fabric8 maven plugin - Kube, Docker -->
+			<plugin>
+			
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric8-maven-plugin</artifactId> 
+        <version>3.5.41</version>
+				<configuration>
+					<images>
+						<image>
+							<name>npiper/${project.artifactId}</name>
+							  <build>
+							   <from>npiper/openjdk8-graphviz</from>
+							</build>
+						
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+	
 
 
 			<plugin>
