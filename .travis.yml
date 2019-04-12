@@ -10,11 +10,11 @@ before_script:
 - git config --global user.email "${GIT_USER_EMAIL}"
 - cp .travis.settings.xml $HOME/.m2/settings.xml
 script:
-- mvn clean install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
+- export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}' --non-recursive exec:exec)
+- mvn clean install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dimage=${ARTID}
 after_success:
 - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && mvn site deploy scm:tag -DskipTests -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}' --non-recursive exec:exec)
 - docker images
 - docker push ${ARTID}
 env:
