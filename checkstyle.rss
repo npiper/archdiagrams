@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://maven.apache.org/checkstyle.html#neilpiper.me.archdiagrams.views.PlantUMLDiagram.java">neilpiper/me/archdiagrams/views/PlantUMLDiagram.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://maven.apache.org/checkstyle.html#neilpiper.me.archdiagrams.views.AbstractPlantUMLDiagram.java">neilpiper/me/archdiagrams/views/AbstractPlantUMLDiagram.java</a>
                 </td>
                 <td>
@@ -67,6 +53,20 @@ under the License.
                 </td>
                 <td>
                   9
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#neilpiper.me.archdiagrams.views.PlantUMLDiagram.java">neilpiper/me/archdiagrams/views/PlantUMLDiagram.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
                 <td>
                   0
