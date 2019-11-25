@@ -24,9 +24,10 @@ jobs:
   - stage: masterdeploy
     name: build master, site and deploy
     script: 
-     - export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}'
+     - export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}
+     - export REV=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
      - mvn clean install jib:dockerBuild scm:tag deploy site -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
-     - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && docker images && docker ${ARTID}:${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
+     - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && docker images && docker push ${ARTID}:${REV}
 
 
 env:
