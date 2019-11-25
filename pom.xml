@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>neilpiper.me</groupId>
 	<artifactId>archdiagrams</artifactId>
-	<version>0.1.0-${revision}</version>
+	<version>0.1.2</version>
 	<packaging>jar</packaging>
 
 	<name>archdiagrams</name>
@@ -17,7 +18,7 @@
 	<parent>
 		<groupId>neilpiper.me</groupId>
 		<artifactId>rest.microservice.base</artifactId>
-		<version>0.1.0_35.47a4d84</version>
+		<version>(,1.0]</version>
 	</parent>
 
 	<properties>

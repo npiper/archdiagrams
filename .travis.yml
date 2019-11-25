@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk8
+jdk: openjdk8
 services:
 - docker
 branches:
@@ -9,18 +9,26 @@ before_script:
 - git config --global user.name "${GIT_USER_NAME}"
 - git config --global user.email "${GIT_USER_EMAIL}"
 - cp .travis.settings.xml $HOME/.m2/settings.xml
-script:
-- export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}'
-  --non-recursive exec:exec)
-- mvn clean install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse
-  --short HEAD) -Dimage=${ARTID}
-after_success:
-- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && mvn site
-  deploy scm:tag -DskipTests -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short
-  HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
-- echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-- docker images
-- docker push ${ARTID}
+stages:
+- name: devbuild
+  if: branch != master
+- name: masterdeploy
+  if: branch = master
+
+jobs:
+  include:
+  - stage: devbuild
+    name: Development Build
+    script: mvn clean install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git
+      rev-parse --short HEAD)
+  - stage: masterdeploy
+    name: build master, site and deploy
+    script: 
+     - export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}'
+     - mvn clean install jib:dockerBuild scm:tag deploy site -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
+     - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && docker images && docker ${ARTID}:${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
+
+
 env:
   global:
   - secure: Ne0GCbBuip31i1pN0TbdWCXrDfP2RPFKZiaAO+azBjD2VAT3MYBCBx+7+6tvtqLY/7OM99sdjR5C7cn68aGA4hEuDiyYiEF8OrS2I/npjEtqivMwN9cBNbXMzBtIESkxuyNL5lqCxN+UNeZgTS2yybUcVUrKvqDLpvYjK5//7cRTPMuFM3gyN+vvI7Luzzujy00v7X3e7kxo3cP9Fyw8EgfnsMwJUmVp0Yg7x3jX73Y96j4ibDD/5oLV6CPpf9BLPLa/NN//Ne7Q0Nwx7wZRMlDyVv0i47Gh+cz2qzZtHUMJF/Mmxg6QS0Q5qMIm7gsPG7FPi96RqHVcxJntgxGG55niZVw358usTVOUI7CcqiJkDR3c5/jvbnJlm5JNwgUS57lyhmHHMfPQ7f4NRY3jlw2BWbwAAxX3O4p3YfexWATja+NHQuZ2jiklLJawJ268G8Wxk53Q/csQUklPKPC9QyC3wF5yTLwCBdo8GuUMyHN1Bw9AiJODDW3O55e10OM75b8WGcXXkM4LtOiPSRYxe4zjtaav3xx4vuFRqWDr29Yahlpu+WNfJrBNGn5qaU6J3yfjbXoQBDg1ondxTh47n5M5btLT6Phk6sH0HUhXioxwrF9ss3TRp9xEfJUl8eKjnvDMzYcS92Sb2GQymIOw8cy42lG4izYu0yFdHNHU13M=
