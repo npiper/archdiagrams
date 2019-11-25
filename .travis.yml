@@ -19,16 +19,14 @@ jobs:
   include:
   - stage: devbuild
     name: Development Build
-    script: mvn install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git
-      rev-parse --short HEAD)
+    script: mvn install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
   - stage: masterdeploy
     name: build master, site and deploy
     script: 
-     - export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}
+     - export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='npiper/${project.artifactId}' --non-recursive exec:exec)
      - export REV=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
-     - mvn install jib:dockerBuild scm:tag deploy site -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
-     - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && docker images && docker push npiper/archdiagrams:${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
-
+     - mvn install jib:dockerBuild scm:tag deploy site -Drevision=${REV} -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
+     - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && docker images && docker push npiper/archdiagrams:${REV}
 
 env:
   global:
