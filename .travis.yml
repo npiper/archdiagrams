@@ -19,7 +19,7 @@ jobs:
   include:
   - stage: devbuild
     name: Development Build
-    script: mvn clean install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git
+    script: mvn install jib:dockerBuild -Drevision=${TRAVIS_BUILD_NUMBER}.$(git
       rev-parse --short HEAD)
   - stage: masterdeploy
     name: build master, site and deploy
