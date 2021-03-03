@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import neilpiper.me.archdiagrams.components.ArchViewsComponent;
 import net.sourceforge.plantuml.SourceStringReader;
 
@@ -60,4 +63,28 @@ public class ArchDiagramService {
 
   }
 
+
+  @RequestMapping(value = "/archdiagrams/{ID}/plantUML", method = RequestMethod.GET,produces = "application/text")
+  public void getPlantUMLRepresentation(HttpServletResponse response, String ID) throws IOException {
+      
+      response.setContentType(MediaType.TEXT_PLAIN_VALUE);
+      
+     
+//      
+//      String source = "@startuml\n";
+//      source += "Bob -> Alice : hello\n";
+//      source += "@enduml\n";
+      String source = views.getDiagramByID("1");
+      
+      
+      
+      SourceStringReader reader = new SourceStringReader(source);
+     
+      
+      response.getOutputStream().print(source);
+      
+      //reader.generateDiagramDescription(response.getOutputStream());
+
+  }
+  
 }
