@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import neilpiper.me.archdiagrams.components.ArchViewsComponent;
 import net.sourceforge.plantuml.SourceStringReader;
 
-/** REST Entry point for Architecture diagrams
+/**
+ * REST Entry point for Architecture diagrams
  * 
  * PlantUML Ref at http://plantuml.com/api
  * 
@@ -25,7 +26,7 @@ public class ArchDiagramService {
 
   @Autowired
   ArchViewsComponent views;
-  
+
 
   @RequestMapping("/archdiagrams")
   public List<String> getDiagramList() {
@@ -43,23 +44,19 @@ public class ArchDiagramService {
     return names;
   }
 
-  @RequestMapping(value = "/archdiagrams/{ID}", method = RequestMethod.GET,produces = "image/png")
+  @RequestMapping(value = "/archdiagrams/{ID}", method = RequestMethod.GET, produces = "image/png")
   public void getImageAsByteArray(HttpServletResponse response, String ID) throws IOException {
-      
-      response.setContentType(MediaType.IMAGE_PNG.getType());
-      
-     
-//      
-//      String source = "@startuml\n";
-//      source += "Bob -> Alice : hello\n";
-//      source += "@enduml\n";
-      String source = views.getDiagramByID("1");
-      
-      
-      
-      SourceStringReader reader = new SourceStringReader(source);
-     
-      reader.generateImage(response.getOutputStream());
+
+    response.setContentType(MediaType.IMAGE_PNG.getType());
+
+
+    String source = views.getDiagramByID("1");
+
+
+
+    SourceStringReader reader = new SourceStringReader(source);
+
+    reader.generateImage(response.getOutputStream());
 
   }
 

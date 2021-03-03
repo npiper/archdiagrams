@@ -30,6 +30,12 @@ import com.structurizr.view.ViewSet;
 // https://github.com/structurizr/java/blob/master/structurizr-examples/src/com/structurizr/example/BigBankPlc.java
 
 public class BigBankPLC {
+  
+  
+ // private static final long WORKSPACE_ID = 41550;
+ // private static final String API_KEY = "5d128e63-f1e1-4d7b-bca5-89d5c9e36107";
+ // private static final String API_SECRET = "d4d24301-512c-489b-971e-53559b847d41"; 
+  
   private static final long WORKSPACE_ID = 41550;
   private static final String API_KEY = "5d128e63-f1e1-4d7b-bca5-89d5c9e36107";// "key";
   private static final String API_SECRET = "d4d24301-512c-489b-971e-53559b847d41"; // "secret";

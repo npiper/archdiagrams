@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# MacOS Finder metadata file 
+.DS_Store 
+
 # Eclipse files
 .project
 .classpath
@@ -8,6 +11,8 @@
 .checkstyle
 .pmd
 .pmdruleset.xml
+.factorypath
+.sts4-cache/
 
 # Maven files
 /target
