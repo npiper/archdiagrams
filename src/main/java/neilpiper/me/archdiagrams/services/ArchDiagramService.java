@@ -64,27 +64,29 @@ public class ArchDiagramService {
   }
 
 
-  @RequestMapping(value = "/archdiagrams/{ID}/plantUML", method = RequestMethod.GET,produces = "application/text")
-  public void getPlantUMLRepresentation(HttpServletResponse response, String ID) throws IOException {
-      
-      response.setContentType(MediaType.TEXT_PLAIN_VALUE);
-      
-     
-//      
-//      String source = "@startuml\n";
-//      source += "Bob -> Alice : hello\n";
-//      source += "@enduml\n";
-      String source = views.getDiagramByID("1");
-      
-      
-      
-      SourceStringReader reader = new SourceStringReader(source);
-     
-      
-      response.getOutputStream().print(source);
-      
-      //reader.generateDiagramDescription(response.getOutputStream());
+  @RequestMapping(value = "/archdiagrams/{ID}/plantUML", method = RequestMethod.GET,
+      produces = "application/text")
+  public void getPlantUMLRepresentation(HttpServletResponse response, String ID)
+      throws IOException {
+
+    response.setContentType(MediaType.TEXT_PLAIN_VALUE);
+
+
+    //
+    // String source = "@startuml\n";
+    // source += "Bob -> Alice : hello\n";
+    // source += "@enduml\n";
+    String source = views.getDiagramByID("1");
+
+
+
+    // SourceStringReader reader = new SourceStringReader(source);
+    // reader.generateDiagramDescription(response.getOutputStream());
+
+
+    response.getOutputStream().print(source);
+
 
   }
-  
+
 }
