@@ -18,11 +18,11 @@
 <repositories>
     <repository>
         <id>maven-central</id>
-        <url>http://repo1.maven.org/maven2</url>
+        <url>https://repo1.maven.org/maven2</url>
     </repository>
         <repository>
             <id>mulesoft-releases</id>
-            <url>http://repository.mulesoft.org/releases/</url>
+            <url>https://repository.mulesoft.org/releases/</url>
         </repository>
 
         <!-- My AWS Public repo -->
@@ -36,7 +36,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-release</id>
-            <url>http://repository.mulesoft.org/releases/</url>
+            <url>https://repository.mulesoft.org/releases/</url>
         </pluginRepository>
 </pluginRepositories>
 
