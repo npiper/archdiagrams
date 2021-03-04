@@ -23,11 +23,11 @@ under the License.
     <link>http://maven.apache.org</link>
     <description>archdiagrams - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018 - 2019 neilpiper.me</copyright>
+    <copyright>&#169;2018 - 2021 neilpiper.me</copyright>
     <item>
       <title>File: 9,
              Errors: 0,
-             Warnings: 73,
+             Warnings: 72,
              Infos: 0
       </title>
             <link>http://maven.apache.org/checkstyle.html</link>
@@ -80,7 +80,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  12
+                  13
                 </td>
                 <td>
                   0
@@ -122,7 +122,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  9
                 </td>
                 <td>
                   0
