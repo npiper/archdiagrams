@@ -1,0 +1,47 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - "!^[0-9]"
+  pull_request:
+
+env:
+  ARTID: npiper/${{ github.event.repository.name }}
+  REV: ${{ github.sha }}
+
+jobs:
+  devbuild:
+    runs-on: ubuntu-latest
+    if: "!contains(github.ref, 'master')"
+    name: Development Build
+    services:
+      docker:
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build and push Docker image
+        run: mvn install jib:dockerBuild -Drevision=${{ github.run_number }}.${{ github.short_sha }}
+  masterdeploy:
+    runs-on: ubuntu-latest
+    if: "contains(github.ref, 'master')"
+    name: Build master, site and deploy
+    services:
+      docker:
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build and push Docker image
+        run: |
+          export ARTID=$(mvn -q -Dexec.executable=echo -Dexec.args='${{ env.ARTID }}' --non-recursive exec:exec)
+          export REV=${{ github.run_number }}.${{ github.short_sha }}
+          mvn install jib:dockerBuild scm:tag deploy site -Drevision=${REV} -Dusername="${{ secrets.GIT_USER_NAME }}" -Dpassword="${{ secrets.GITPW }}"
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin && docker images && docker push npiper/archdiagrams:${REV}
