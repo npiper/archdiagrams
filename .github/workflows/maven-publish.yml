@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.ref, 'master')"
     name: Development Build
-    services:
-      docker:
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -31,8 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "contains(github.ref, 'master')"
     name: Build master, site and deploy
-    services:
-      docker:
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
